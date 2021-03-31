@@ -1,9 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
-
+import React,{useState,useEffect} from 'react';
 function App() {
+
+  const [count , setCount]= useState([]);
+
+  useEffect(()=>{
+      
+      
+      fetch('https://restcountries.eu/rest/v2/all')
+      .then(res => res.json())
+      .then(data => setCount(data));
+      
+  },[])
   return (
     <div className="App">
+      <h1>Countries Info : {count.length}</h1>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
