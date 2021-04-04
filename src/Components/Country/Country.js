@@ -26,7 +26,7 @@
                 <p> Country Population : {population}</p>
 
                 
-                <button onClick={handle}>Add-Country</button>
+                <button onClick={()=>handle(props.count)}>Add-Country</button>
             </div>
         );
     };

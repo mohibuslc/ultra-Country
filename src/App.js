@@ -2,10 +2,13 @@
   import './App.css';
   import React,{useState,useEffect} from 'react';
   import Country from './Components/Country/Country.js';
+  import Cart from '../src/Components/Cart/Cart.js';
 
   function App() {
 
     const [count , setCount]= useState([]);
+    const [cart, setCart]=useState([]); // use for show in top how many country are ADD on cart.
+    
 
     useEffect(()=>{
         
@@ -17,6 +20,7 @@
           setCount(data);
 
           console.log(data);
+
           const names = data.map(count => count.name)
 
           console.log(names);
@@ -26,7 +30,14 @@
       
     },[])
 
-    const handle = () => {console.log('Country-Added')}; // add button for "eventhandler" :
+    const handle = (count) => {
+      
+      const newCart =[...cart, count]; //  when make click on button then upside show country number . how many country are ADDAD
+
+      setCart(newCart);
+
+      
+      console.log('Country-Added', count)}; // add button for "eventhandler" @ now make this one multiline and put count inside the braket:
 
 
     return (
@@ -34,6 +45,8 @@
 
         
         <h1>Countries Info : {count.length}</h1>
+        <p>Country added:{cart.length}</p>
+        <Cart cart={cart}></Cart>
         <ul>
 
               {
